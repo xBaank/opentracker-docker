@@ -18,7 +18,7 @@ RUN apk add --no-cache \
 	&& make \
 	&& cd ../ \
 
-	&& git clone https://github.com/xBaank/opentracker.git \
+	&& git clone git://erdgeist.org/opentracker \
 		&& cd opentracker \
 		&& CFLAGS="-DWANT_IP_FROM_QUERY_STRING" make \
 
