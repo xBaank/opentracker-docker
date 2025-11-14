@@ -18,9 +18,9 @@ RUN apk add --no-cache \
 	&& make \
 	&& cd ../ \
 
-	&& git clone git://erdgeist.org/opentracker \
+	&& git clone https://github.com/xBaank/opentracker.git \
 		&& cd opentracker \
-		&& make \
+		&& CFLAGS="-DWANT_IP_FROM_QUERY_STRING" make \
 
 	&& mv /tmp/opentracker/opentracker /bin/ \
 
@@ -31,6 +31,7 @@ COPY ./opentracker.conf /etc/opentracker/opentracker.conf
 COPY ./whitelist.txt	/etc/opentracker/whitelist.txt
 COPY ./blacklist.txt	/etc/opentracker/blacklist.conf
 
-EXPOSE 6969
+EXPOSE 6969/tcp
+EXPOSE 6969/udp
 
 CMD opentracker -f /etc/opentracker/opentracker.conf
